@@ -1,7 +1,5 @@
 /*
- *Falta colocar MIS PROGRAMAS como card
- *Colocar la > a c/Programa q envie a PageDetallePago
- *Colocar el nombre del usuario 
+ *Falta formato del nombre del usuario 
  */
 
 import 'package:detalle_pago_api/pages/PageDetallePago.dart';
@@ -35,9 +33,9 @@ class _ProgramasState extends State<Programas> {
 
     http.Response response = await http.get(
         "https://sigapdev2-consultarecibos-back.herokuapp.com/alumnoprograma/buscard/${user.dniM}"); //"http://10.0.2.2:4000/api/users" para uso del emulador
-    debugPrint(response.body); // muestra por consola los datos de la api
+    //debugPrint(response.body); // muestra por consola los datos de la api
     programaData = json.decode(response.body); //Pasa a Map
-    print("Recuperado de api-> $programaData");
+    //print("Recuperado de api-> $programaData");
     ProgramaList objetoListaProgramas = new ProgramaList.fromJson(programaData);
 
     setState(() {
@@ -91,7 +89,6 @@ class _ProgramasState extends State<Programas> {
             softWrap: true,
           ),
         ),
-        //Falta agregar > para q envie a PageDetallePago
       ],
     );
   }
@@ -100,8 +97,6 @@ class _ProgramasState extends State<Programas> {
 
   @override
   Widget build(BuildContext context) {
-    //Hacer las cards parecido a lista de pagos
-    //Y usar onTap para entrar a cada tarjeta
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false, //Elimina la flecha 'Atrás'
@@ -124,7 +119,8 @@ class _ProgramasState extends State<Programas> {
                             "${user.nomAlumno}",
                             style: TextStyle(fontSize: 10),
                             softWrap: true,
-                          )),
+                          )
+                      ),
                       Container(
                         child: CircleAvatar(
                           backgroundImage: AssetImage("assets/rostro.jpg"),
@@ -151,14 +147,15 @@ class _ProgramasState extends State<Programas> {
                       : listaProgramasData.length,
                   itemBuilder: (BuildContext context, int i) {
                     return Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-                        child: cardDetallePrograma(listaProgramasData, i));
+                        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+                        child: cardDetallePrograma(listaProgramasData, i)
+                    );
                   },
                 ),
               ),
             ],
           ),
-        ));
+        )
+    );
   }
 }

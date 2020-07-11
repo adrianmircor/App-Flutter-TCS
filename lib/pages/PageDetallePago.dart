@@ -35,7 +35,7 @@ class _DetallePagoState extends State<DetallePago> {
     print("Imprimir");
     debugPrint(response.body);// muestra por consola los datos de la api
     pagosData = json.decode(response.body); //Pasa a Map
-    print("Recuperado de api-> $pagosData");
+    //print("Recuperado de api-> $pagosData");
     PagoList objetoListaPagos = new PagoList.fromJson(pagosData);
     /* pagosData = objetoListaPagos.pagoList;
     print("LISTA RECUPERADA EN main.dart ->> ${objetoListaPagos.pagoList}");
@@ -45,11 +45,11 @@ class _DetallePagoState extends State<DetallePago> {
 
     setState(() {
       listaPagosData = objetoListaPagos.pagoList;
-      print("Parseado a Lista, ya puede ser usado en widget-> $listaPagosData");
+      //print("Parseado a Lista, ya puede ser usado en widget-> $listaPagosData");
     });
   }
 
-  //Apensas se llama a la clase HomePage, que se ejecute initState()
+  //Apenas se llama a la clase HomePage, que se ejecute initState()
   @override
   void initState() {
     super.initState();
@@ -108,8 +108,9 @@ class _DetallePagoState extends State<DetallePago> {
             left: 15, top: 0, right: 15, bottom: 12), //De la caja
         child: Card(
             elevation: 10,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            shape:RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10)
+            ),
             child: Padding(
               //Propio del Texto
               padding: const EdgeInsets.all(10.0),

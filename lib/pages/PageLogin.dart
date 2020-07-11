@@ -89,6 +89,30 @@ class _LoginState extends State<Login> {
     );
   }
 
+  void verificarLogin() async {
+    Map usuarioData;
+
+    print("Aqui va la consulta a la API");
+    http.Response response = await http.get(
+        "https://sigapdev2-consultarecibos-back.herokuapp.com/usuario/alumnoprograma/buscar/$_id/$_contrasena"); //"http://10.0.2.2:4000/api/users" para uso del emulador
+    //print("trayendo datos");
+    if (response.body == "") {
+      print("No existe el usuario");
+    } else {
+      print("Existe el usuario");
+      //debugPrint(response.body); // muestra por consola los datos de la api
+      usuarioData = json.decode(response.body); //Pasa a Map
+      Usuario user = new Usuario.fromJson(usuarioData);
+      //Envia el codigo del alumno a la otra ventana
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Programas(user: user),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,27 +152,4 @@ class _LoginState extends State<Login> {
     );
   }
 
-  void verificarLogin() async {
-    Map usuarioData;
-
-    print("Aqui va la consulta a la API");
-    http.Response response = await http.get(
-        "https://sigapdev2-consultarecibos-back.herokuapp.com/usuario/alumnoprograma/buscar/$_id/$_contrasena"); //"http://10.0.2.2:4000/api/users" para uso del emulador
-    print("trayendo datos");
-    if (response.body == "") {
-      print("No existe el usuario");
-    } else {
-      print("Existe el usuario");
-      debugPrint(response.body); // muestra por consola los datos de la api
-      usuarioData = json.decode(response.body); //Pasa a Map
-      Usuario user = new Usuario.fromJson(usuarioData);
-      //Envia el codigo del alumno a la otra ventana
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Programas(user: user),
-        ),
-      );
-    }
-  }
 }

@@ -12,8 +12,6 @@ class PagoList {
     List<Pago> pagoList = new List<Pago>();
     pagoList = parsedJson.map((i) => Pago.fromJson(i)).toList();
 
-    //print("LISTA DE PAGOS en clase -> ${pagoList[0].idRec}");
-
     //Como son PARAMETROS OPCIONALES, para ASIGNAR VALORES se usa :
     return new PagoList(
       pagoList: pagoList,

@@ -11,7 +11,6 @@ class Pago {
 
   //metodo FACTORY hace que un CONSTRUCTOR PUEDA RETORNAR algo
   factory Pago.fromJson(Map<String, dynamic> json) {
-    
     //Como son PARAMETROS OPCIONALES, para ASIGNAR VALORES se usa :
     return new Pago(
       concepto: json['concepto'],
