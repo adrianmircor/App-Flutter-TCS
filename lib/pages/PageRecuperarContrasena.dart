@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import "package:http/http.dart" as http; //peticiones http
-import "dart:convert"; //Convertir los datos del backend a JSON y poder usarlo en la app
+import "dart:convert"; //Convertir los datos del backend a JSON y poder usarlo en la app.
 
 class RecuperarContrasena extends StatefulWidget {
   RecuperarContrasena({Key key}) : super(key: key);
